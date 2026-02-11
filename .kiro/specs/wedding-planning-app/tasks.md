@@ -6,7 +6,7 @@ This implementation plan breaks down the wedding planning web app into discrete 
 
 ## Tasks
 
-- [ ] 1. Initialize project structure and dependencies
+- [x] 1. Initialize project structure and dependencies
   - Create new Vite + React project
   - Install dependencies: react-router-dom, tailwindcss
   - Configure Tailwind CSS with custom colors (wedding-pink: #f391cc, wedding-cyan: #70cedd)
@@ -14,8 +14,8 @@ This implementation plan breaks down the wedding planning web app into discrete 
   - Create index.css with Tailwind imports
   - _Requirements: 1.1, 1.2, 1.3, 6.2, 6.3_
 
-- [ ] 2. Create configuration and routing setup
-  - [ ] 2.1 Create chat configuration file
+- [x] 2. Create configuration and routing setup
+  - [x] 2.1 Create chat configuration file
     - Create config/chatConfig.js with embedUrl export
     - Add placeholder URL or environment variable support
     - _Requirements: 5.1_
@@ -25,7 +25,7 @@ This implementation plan breaks down the wedding planning web app into discrete 
     - **Example 7: Configuration Exports Embed URL**
     - **Validates: Requirements 5.1**
   
-  - [ ] 2.3 Set up React Router in App.jsx
+  - [x] 2.3 Set up React Router in App.jsx
     - Import BrowserRouter, Routes, Route from react-router-dom
     - Create routes for "/" (LandingPage) and "/chat" (ChatPage)
     - Add catch-all route that redirects to "/"
@@ -37,8 +37,8 @@ This implementation plan breaks down the wedding planning web app into discrete 
     - Test that both routes exist (**Example 6**)
     - **Validates: Requirements 2.1, 3.1, 4.1**
 
-- [ ] 3. Implement NavigationButton component
-  - [ ] 3.1 Create NavigationButton component
+- [x] 3. Implement NavigationButton component
+  - [x] 3.1 Create NavigationButton component
     - Create components/NavigationButton.jsx
     - Accept `to` and `children` props
     - Use useNavigate hook for navigation
@@ -73,8 +73,8 @@ This implementation plan breaks down the wedding planning web app into discrete 
     - Test responsive classes are applied at different breakpoints (**Edge Case 1**)
     - **Validates: Requirements 2.2, 7.1, 7.2, 7.3**
 
-- [ ] 5. Implement ChatEmbed component
-  - [ ] 5.1 Create ChatEmbed component
+- [x] 5. Implement ChatEmbed component
+  - [x] 5.1 Create ChatEmbed component
     - Create components/ChatEmbed.jsx
     - Accept embedUrl prop
     - Validate embedUrl (check if it's a non-empty string)
@@ -93,8 +93,8 @@ This implementation plan breaks down the wedding planning web app into discrete 
     - Test error message for invalid URL (**Example 8**)
     - **Validates: Requirements 3.2, 5.2, 5.5**
 
-- [ ] 6. Implement ChatPage component
-  - [ ] 6.1 Create ChatPage component
+- [x] 6. Implement ChatPage component
+  - [x] 6.1 Create ChatPage component
     - Create pages/ChatPage.jsx
     - Import chatConfig and extract embedUrl
     - Render ChatEmbed component with embedUrl prop
