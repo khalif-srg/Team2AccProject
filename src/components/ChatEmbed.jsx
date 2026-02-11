@@ -45,11 +45,18 @@ function ChatEmbed({ embedUrl }) {
       console.error('Failed to initialize chat:', error);
     }
 
-    // Cleanup function
+    // Cleanup function - properly destroy the chat widget
     return () => {
-      if (chatInstanceRef.current) {
-        chatInstanceRef.current = null;
+      // Remove all n8n chat elements from the DOM
+      const chatElements = document.querySelectorAll('[id^="n8n-chat"]');
+      chatElements.forEach(el => el.remove());
+      
+      // Clear the container
+      if (chatContainerRef.current) {
+        chatContainerRef.current.innerHTML = '';
       }
+      
+      chatInstanceRef.current = null;
     };
   }, [embedUrl, isValidUrl]);
 
