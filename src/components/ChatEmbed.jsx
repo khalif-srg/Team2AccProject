@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import '@n8n/chat/style.css';
 import { createChat } from '@n8n/chat';
+import './chat_embed_style.css';
 
 function ChatEmbed({ embedUrl }) {
   const chatContainerRef = useRef(null);
@@ -15,38 +16,43 @@ function ChatEmbed({ embedUrl }) {
     // Prevent multiple initializations
     if (chatInstanceRef.current) return;
 
-    try {
-      // Initialize with n8n workflow configuration
-      chatInstanceRef.current = createChat({
-        mode: 'fullscreen',
-        webhookUrl: embedUrl,
-        showWelcomeScreen: false,
-        loadPreviousSession: false,
-        webhookConfig: {
-          headers: {
-            'X-Instance-Id': 'b74772ad7548c91e3b42b170165adb520c6cffcf356559953ecf81d907d4b27e',
-          }
-        },
-        allowFileUploads: false,
-        allowedFilesMimeTypes: "",
-        i18n: {
-          en: {
-            subtitle: "",
-            title: ""
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      try {
+        // Initialize with n8n workflow configuration
+        chatInstanceRef.current = createChat({
+          mode: 'fullscreen',
+          target: '#n8n-chat-container',
+          webhookUrl: embedUrl,
+          showWelcomeScreen: false,
+          loadPreviousSession: false,
+          webhookConfig: {
+            headers: {
+              'X-Instance-Id': 'b74772ad7548c91e3b42b170165adb520c6cffcf356559953ecf81d907d4b27e',
+            }
           },
-        },
-        initialMessages: [
-          "Hi there! 👋",
-          "My name is Nathan. How can I assist you today?"
-        ],
-        enableStreaming: true,
-      });
-    } catch (error) {
-      console.error('Failed to initialize chat:', error);
-    }
+          allowFileUploads: false,
+          allowedFilesMimeTypes: "",
+          i18n: {
+            en: {
+              subtitle: "",
+              title: ""
+            },
+          },
+          initialMessages: [
+            "Hi there, I'll be your personal wedding advisor. I'll just need some information before we get started. I specialize in both finding venues and catering for you. Please enter the following details so I can find the best results for you.\n\n1. Date of event\n2. Budget (Total)\n3. Number of guests\n4. Images as inspiration (optional)\n5. Location: (eg. City (Indoor/Outdoor))\n6. Venue type (Church, Park, etc.)"
+          ],
+          enableStreaming: false,
+        });
+      } catch (error) {
+        console.error('Failed to initialize chat:', error);
+      }
+    }, 100);
 
     // Cleanup function - properly destroy the chat widget
     return () => {
+      clearTimeout(timer);
+      
       // Remove all n8n chat elements from the DOM
       const chatElements = document.querySelectorAll('[id^="n8n-chat"]');
       chatElements.forEach(el => el.remove());
