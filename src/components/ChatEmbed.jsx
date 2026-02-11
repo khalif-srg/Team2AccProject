@@ -7,19 +7,14 @@ function ChatEmbed({ embedUrl }) {
   const chatContainerRef = useRef(null);
   const chatInstanceRef = useRef(null);
 
-  // Validate embedUrl
   const isValidUrl = embedUrl && typeof embedUrl === 'string' && embedUrl.trim().length > 0;
 
   useEffect(() => {
     if (!isValidUrl || !chatContainerRef.current) return;
-
-    // Prevent multiple initializations
     if (chatInstanceRef.current) return;
 
-    // Small delay to ensure DOM is ready
     const timer = setTimeout(() => {
       try {
-        // Initialize with n8n workflow configuration
         chatInstanceRef.current = createChat({
           mode: 'fullscreen',
           target: '#n8n-chat-container',
@@ -49,19 +44,13 @@ function ChatEmbed({ embedUrl }) {
       }
     }, 100);
 
-    // Cleanup function - properly destroy the chat widget
     return () => {
       clearTimeout(timer);
-      
-      // Remove all n8n chat elements from the DOM
       const chatElements = document.querySelectorAll('[id^="n8n-chat"]');
       chatElements.forEach(el => el.remove());
-      
-      // Clear the container
       if (chatContainerRef.current) {
         chatContainerRef.current.innerHTML = '';
       }
-      
       chatInstanceRef.current = null;
     };
   }, [embedUrl, isValidUrl]);
@@ -82,10 +71,13 @@ function ChatEmbed({ embedUrl }) {
   }
 
   return (
-    <div 
-      id="n8n-chat-container" 
+    <div
+      id="n8n-chat-container"
       ref={chatContainerRef}
-      className="w-full h-full"
+      style={{
+        width: '100%',
+        height: '100%',
+      }}
     />
   );
 }

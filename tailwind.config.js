@@ -6,9 +6,8 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        'wedding-pink': '#f391cc',
-        'wedding-cyan': '#70cedd',
+      fontFamily: {
+        geist: ['Geist', 'sans-serif'],
       },
     },
   },
