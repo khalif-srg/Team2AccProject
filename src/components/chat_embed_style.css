@@ -53,7 +53,7 @@
   --chat--message--bot--background: #ffffff;
   --chat--message--bot--color: #374151;
   --chat--message--bot--border: 1px solid rgba(250, 212, 204, 0.3);
-  --chat--message--user--background: linear-gradient(to right, #F06B5C, #E8836F);
+  --chat--message--user--background: linear-gradient(to right, #F06B5C, #F8A58B);
   --chat--message--user--color: #ffffff;
   --chat--message--user--border: none;
   --chat--message--pre--background: rgba(0, 0, 0, 0.04);
@@ -164,6 +164,8 @@
 /* User bubbles — flat bottom-right (ChatDemo) */
 .chat-message-from-user {
   border-radius: 1rem 1rem 0.375rem 1rem !important;
+  background: linear-gradient(to right, #F06B5C, #F8A58B) !important;
+  color: #ffffff !important;
 }
 
 /* Footer — thin blush border like ChatDemo */
@@ -203,4 +205,10 @@
 /* Hide powered by */
 .chat-powered-by {
   display: none !important;
+}
+
+/* Force user message text to be white */
+.chat-message-from-user,
+.chat-message-from-user * {
+  color: #ffffff !important;
 }
