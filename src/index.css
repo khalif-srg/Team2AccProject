@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* n8n Chat Widget Custom Styling - From n8n Workflow Configuration */
+:root {
+  /* Colors */
+  --background-gradient: linear-gradient(90deg, #f391cc, #70cedd);
+  --chat--color--primary: #70cedd;
+  --chat--color--primary-shade-50: #63c4d3;
+  --chat--color--primary--shade-100: #56b9c8;
+  --chat--color--secondary: #f391cc;
+  --chat--color-secondary-shade-50: #63c4d3;
+  --chat--color-white: #f2f2f2;
+  --chat--color-light: var(--background-gradient);
+  --chat--color-light-shade-50: #e6e6e6;
+  --chat--color-light-shade-100: #d0d0d0;
+  --chat--color-medium: #d3d3d3;
+  --chat--color-dark: var(--background-gradient);
+  --chat--color-disabled: #d3d3d3;
+  --chat--color-typing: #000000;
+
+  /* Header Styles */
+  --chat--header-height: 0;
+  --chat--header--padding: 0;
+  --chat--header--background: var(--chat--color-dark);
+  --chat--header--color: #000000;
+
+  /* Message Styles */
+  --chat--message--bot--background: var(--chat--color-white);
+  --chat--message--bot--color: #000000;
+  --chat--message--user--background: var(--chat--color--secondary);
+  --chat--message--user--color: #000000;
+
+  /* Toggle Button */
+  --chat--toggle--background: var(--chat--color--primary);
+  --chat--toggle--hover--background: var(--chat--color--primary-shade-50);
+  --chat--toggle--active--background: var(--chat--color--primary--shade-100);
+  --chat--toggle--color: #000000;
+
+  /* Input Area */
+  --chat--input--background: var(--chat--color-white);
+  --chat--input--text-color: #000000;
+
+  /* Button Styles */
+  --chat--button--color--primary: #000000;
+  --chat--button--background--primary: var(--chat--color--secondary);
+  --chat--button--color--primary--hover: #000000;
+  --chat--button--background--primary--hover: var(--chat--color-secondary-shade-50);
+
+  /* Body and Footer */
+  --chat--body--background: var(--chat--color-light);
+  --chat--footer--background: var(--chat--color-light);
+  --chat--footer--color: #000000;
+}
