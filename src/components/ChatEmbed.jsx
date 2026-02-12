@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import '@n8n/chat/style.css';
 import { createChat } from '@n8n/chat';
 import './chat_embed_style.css';
+import { chatConfig } from '../config/chatConfig';
 
 function ChatEmbed({ embedUrl }) {
   const chatContainerRef = useRef(null);
@@ -29,12 +30,20 @@ function ChatEmbed({ embedUrl }) {
             'X-Instance-Id': 'b74772ad7548c91e3b42b170165adb520c6cffcf356559953ecf81d907d4b27e',
           }
         },
-        allowFileUploads: false,
-        allowedFilesMimeTypes: "",
+        // Enable file uploads with configuration
+        allowFileUploads: chatConfig.fileUpload.enabled,
+        allowedFilesMimeTypes: chatConfig.fileUpload.allowedTypes.join(','),
+        maxFileSize: chatConfig.fileUpload.maxSizeMB,
         i18n: {
           en: {
             subtitle: "",
-            title: ""
+            title: "",
+            // Customize file upload messages
+            fileUpload: {
+              selectFile: "Upload image",
+              fileSizeExceeded: `File size exceeds ${chatConfig.fileUpload.maxSizeMB}MB limit`,
+              fileTypeNotAllowed: "Only image files are allowed"
+            }
           },
         },
         initialMessages: [
