@@ -1,11 +1,11 @@
 :root {
   /* Colors */
-  --background-gradient: linear-gradient(90deg, #F06B5C, #FAD4CC);
-  --chat--color--primary: #F06B5C;
-  --chat--color--primary-shade-50: #E8836F;
-  --chat--color--primary--shade-100: #F97B6B;
-  --chat--color--secondary: #F4A594;
-  --chat--color-secondary-shade-50: #FAD4CC;
+  --background-gradient: linear-gradient(90deg, #FF6B9D, #C084FC, #FCD34D);
+  --chat--color--primary: #FF6B9D;
+  --chat--color--primary-shade-50: #FF8FB3;
+  --chat--color--primary--shade-100: #FFB3CA;
+  --chat--color--secondary: #C084FC;
+  --chat--color-secondary-shade-50: #D4A5FF;
   --chat--color-white: #f9fafb;
   --chat--color-light: #ffffff;
   --chat--color-light-shade-50: #f3f0ee;
@@ -53,7 +53,7 @@
   --chat--message--bot--background: #ffffff;
   --chat--message--bot--color: #374151;
   --chat--message--bot--border: 1px solid rgba(250, 212, 204, 0.3);
-  --chat--message--user--background: linear-gradient(to right, #F06B5C, #F8A58B);
+  --chat--message--user--background: linear-gradient(to right, #FF6B9D, #C084FC, #FCD34D);
   --chat--message--user--color: #ffffff;
   --chat--message--user--border: none;
   --chat--message--pre--background: rgba(0, 0, 0, 0.04);
@@ -107,10 +107,10 @@
   --chat--button--border--secondary--disabled: none;
   --chat--close--button--color-hover: var(--chat--color--primary);
 
-  /* Send Button — coral gradient circle like ChatDemo */
-  --chat--input--send--button--background: linear-gradient(to right, #F06B5C, #E8836F);
+  /* Send Button — rose to purple to amber gradient circle */
+  --chat--input--send--button--background: linear-gradient(to right, #FF6B9D, #C084FC, #FCD34D);
   --chat--input--send--button--color: #ffffff;
-  --chat--input--send--button--background-hover: linear-gradient(to right, #E8836F, #F06B5C);
+  --chat--input--send--button--background-hover: linear-gradient(to right, #FF8FB3, #D4A5FF, #FDE68A);
   --chat--input--send--button--color-hover: #ffffff;
   --chat--input--file--button--background: transparent;
   --chat--input--file--button--color: var(--chat--color--primary);
@@ -161,10 +161,10 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
 }
 
-/* User bubbles — flat bottom-right (ChatDemo) */
+/* User bubbles — flat bottom-right */
 .chat-message-from-user {
   border-radius: 1rem 1rem 0.375rem 1rem !important;
-  background: linear-gradient(to right, #F06B5C, #F8A58B) !important;
+  background: linear-gradient(to right, #FF6B9D, #C084FC, #FCD34D) !important;
   color: #ffffff !important;
 }
 
@@ -188,12 +188,12 @@
   background: #e8e9eb !important;
 }
 
-/* Send button — coral gradient circle like ChatDemo */
+/* Send button — rose to purple to amber gradient circle */
 .chat-input-send-button, .chat-input-file-button {
   width: 2.25rem !important;
   height: 2.25rem !important;
   border-radius: 50% !important;
-  background: linear-gradient(to right, #F06B5C, #E8836F) !important;
+  background: linear-gradient(to right, #FF6B9D, #C084FC, #FCD34D) !important;
   color: #ffffff !important;
   flex-shrink: 0 !important;
   transition: all 0.2s ease !important;
