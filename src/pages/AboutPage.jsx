@@ -91,7 +91,7 @@ function AboutPage() {
 
       {/* Footer */}
       <footer className="relative z-10 backdrop-blur-sm bg-white/70 border-t border-wedding-blush/50 py-8 text-center">
-        <div className="text-gray-600 mb-2">&copy; 2024 Wedding Planner</div>
+        <div className="text-gray-600 mb-2">&copy; 2026 Wedding Planner</div>
         <div className="flex justify-center gap-6 text-sm text-gray-500">
           <a href="#" className="hover:text-wedding-coral transition-colors">Privacy</a>
           <a href="#" className="hover:text-wedding-salmon transition-colors">Terms</a>
