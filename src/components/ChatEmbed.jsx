@@ -20,14 +20,14 @@ function ChatEmbed({ embedUrl }) {
           target: '#n8n-chat-container',
           webhookUrl: embedUrl,
           showWelcomeScreen: false,
-          loadPreviousSession: false,
+          loadPreviousSession: true,
           webhookConfig: {
             headers: {
               'X-Instance-Id': 'b74772ad7548c91e3b42b170165adb520c6cffcf356559953ecf81d907d4b27e',
             }
           },
-          allowFileUploads: false,
-          allowedFilesMimeTypes: "",
+          allowFileUploads: true,
+          allowedFilesMimeTypes: "image/png,image/jpeg,image/jpg,image/gif,image/webp",
           i18n: {
             en: {
               subtitle: "",

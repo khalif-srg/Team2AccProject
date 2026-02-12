@@ -121,11 +121,11 @@ function ChatDemo() {
   const activeMessage = currentMessageIndex < CONVERSATION.length ? CONVERSATION[currentMessageIndex] : null;
 
   return (
-    <div className="w-full max-w-lg mx-auto">
+    <div className="w-full h-full flex items-stretch">
       {/* Phone frame */}
-      <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-wedding-blush/40">
+      <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-wedding-blush/40 flex flex-col w-full">
         {/* Chat header */}
-        <div className="bg-gradient-to-r from-wedding-coral via-wedding-rose to-wedding-salmon px-5 py-3.5 flex items-center gap-3">
+        <div className="bg-gradient-to-r from-wedding-coral via-wedding-rose to-wedding-salmon px-5 py-3.5 flex items-center gap-3 shrink-0">
           <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
             <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -147,7 +147,7 @@ function ChatDemo() {
         {/* Chat body */}
         <div
           ref={chatBodyRef}
-          className="h-80 overflow-y-auto px-4 py-4 flex flex-col gap-3 bg-gradient-to-b from-wedding-blush/10 to-white"
+          className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3 bg-gradient-to-b from-wedding-blush/10 to-white"
         >
           {/* Completed messages */}
           {visibleMessages.map((msg, i) => (
@@ -165,7 +165,7 @@ function ChatDemo() {
         </div>
 
         {/* Chat input bar */}
-        <div className="px-4 py-3 border-t border-wedding-blush/20 flex items-center gap-2 bg-white">
+        <div className="px-4 py-3 border-t border-wedding-blush/20 flex items-center gap-2 bg-white shrink-0">
           <div className="flex-1 bg-gray-50 rounded-full px-4 py-2 text-sm text-gray-400">
             Ask about your wedding...
           </div>
