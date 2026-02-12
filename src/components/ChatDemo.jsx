@@ -147,7 +147,7 @@ function ChatDemo() {
         {/* Chat body */}
         <div
           ref={chatBodyRef}
-          className="flex-1 overflow-y-auto px-5 py-5 flex flex-col gap-4 bg-gradient-to-b from-rose/5 via-purple/5 to-transparent"
+          className="flex-1 overflow-y-auto px-5 py-5 flex flex-col gap-4 bg-gradient-to-b from-rose/5 via-purple/5 to-transparent dark:from-rose/10 dark:via-purple/10 dark:to-transparent dark:bg-[#0F0F0F]"
         >
           {/* Completed messages */}
           {visibleMessages.map((msg, i) => (
@@ -165,8 +165,8 @@ function ChatDemo() {
         </div>
 
         {/* Chat input bar */}
-        <div className="px-5 py-4 border-t border-rose/10 flex items-center gap-3 bg-white/50 backdrop-blur-sm shrink-0">
-          <div className="flex-1 bg-white/80 rounded-2xl px-5 py-3 text-sm text-gray-light font-medium border border-rose/10">
+        <div className="px-5 py-4 border-t border-rose/10 flex items-center gap-3 bg-white/50 backdrop-blur-sm shrink-0 dark:bg-[#1A1A1A] dark:border-[#3A2A2F]">
+          <div className="flex-1 bg-white/80 rounded-2xl px-5 py-3 text-sm text-gray-light font-medium border border-rose/10 dark:bg-[#1A1A1A] dark:text-gray dark:border-[#3A2A2F]">
             Ask about your wedding...
           </div>
           <button

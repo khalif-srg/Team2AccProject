@@ -170,7 +170,7 @@ function LandingPage() {
                     {step.step}
                   </div>
                   
-                  <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300">{step.icon}</div>
+                  <div className="flex justify-center text-6xl mb-4 group-hover:scale-110 transition-transform duration-300 mt-4">{step.icon}</div>
                   <h3 className="text-2xl font-bold text-foreground mb-2">{step.title}</h3>
                   <p className="text-gray mb-4">{step.desc}</p>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose/10 text-rose text-sm font-semibold">
