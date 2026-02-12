@@ -29,10 +29,10 @@ const PAUSE_BEFORE_RESTART = 4000;
 
 function TypingIndicator() {
   return (
-    <div className="flex items-center gap-1 px-4 py-3">
-      <span className="w-2 h-2 rounded-full bg-wedding-salmon/60 animate-[bounce_1s_ease-in-out_0s_infinite]" />
-      <span className="w-2 h-2 rounded-full bg-wedding-salmon/60 animate-[bounce_1s_ease-in-out_0.15s_infinite]" />
-      <span className="w-2 h-2 rounded-full bg-wedding-salmon/60 animate-[bounce_1s_ease-in-out_0.3s_infinite]" />
+    <div className="flex items-center gap-1.5 px-4 py-3">
+      <span className="w-2 h-2 rounded-full bg-rose/70 animate-[bounce_1s_ease-in-out_0s_infinite]" />
+      <span className="w-2 h-2 rounded-full bg-purple/70 animate-[bounce_1s_ease-in-out_0.15s_infinite]" />
+      <span className="w-2 h-2 rounded-full bg-amber/70 animate-[bounce_1s_ease-in-out_0.3s_infinite]" />
     </div>
   );
 }
@@ -43,10 +43,10 @@ function ChatBubble({ message, isTyping, displayedText }) {
   return (
     <div className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
       <div
-        className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed whitespace-pre-line ${
+        className={`max-w-[85%] rounded-3xl px-5 py-3.5 text-sm leading-relaxed whitespace-pre-line transition-all duration-300 ${
           isUser
-            ? 'bg-gradient-to-r from-wedding-coral to-wedding-salmon text-white rounded-br-md text-right'
-            : 'bg-white text-gray-700 shadow-sm border border-wedding-blush/30 rounded-bl-md text-left'
+            ? 'bg-gradient-to-r from-rose via-purple to-amber text-white shadow-premium rounded-br-lg'
+            : 'glass-strong text-foreground shadow-sm border border-rose/10 rounded-bl-lg'
         }`}
       >
         {isTyping ? <TypingIndicator /> : displayedText}
@@ -122,32 +122,32 @@ function ChatDemo() {
 
   return (
     <div className="w-full h-full flex items-stretch">
-      {/* Phone frame */}
-      <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-wedding-blush/40 flex flex-col w-full">
+      {/* Premium Phone frame */}
+      <div className="glass-strong rounded-[2.5rem] shadow-premium-lg overflow-hidden border-2 border-rose/20 flex flex-col w-full hover:shadow-premium-lg hover:scale-[1.02] transition-all duration-500">
         {/* Chat header */}
-        <div className="bg-gradient-to-r from-wedding-coral via-wedding-rose to-wedding-salmon px-5 py-3.5 flex items-center gap-3 shrink-0">
-          <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
-            <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className="bg-gradient-to-r from-rose via-purple to-amber px-6 py-5 flex items-center gap-3.5 shrink-0">
+          <div className="w-11 h-11 rounded-full bg-white/25 backdrop-blur-sm flex items-center justify-center shadow-lg">
+            <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
-                d="M50 88 C50 88, 12 62, 12 38 C12 22, 24 12, 36 12 C44 12, 48 16, 50 22 C52 16, 56 12, 64 12 C76 12, 88 22, 88 38 C88 62, 50 88, 50 88Z"
+                d="M50 75 C50 75, 25 58, 25 42 C25 32, 32 27, 38 27 C43 27, 47 30, 50 35 C53 30, 57 27, 62 27 C68 27, 75 32, 75 42 C75 58, 50 75, 50 75Z"
                 fill="white"
-                opacity="0.9"
+                opacity="0.95"
               />
             </svg>
           </div>
-          <div>
-            <div className="text-white font-semibold text-sm">AI Wedding Planner</div>
-            <div className="text-white/70 text-xs">Online now</div>
-          </div>
-          <div className="ml-auto flex items-center gap-0.5">
-            <span className="w-2 h-2 rounded-full bg-green-300 animate-pulse" />
+          <div className="flex-1">
+            <div className="text-white font-bold text-base">Amore AI</div>
+            <div className="text-white/90 text-xs flex items-center gap-1.5 font-medium">
+              <span className="w-2 h-2 rounded-full bg-emerald animate-pulse shadow-sm"></span>
+              Always here for you
+            </div>
           </div>
         </div>
 
         {/* Chat body */}
         <div
           ref={chatBodyRef}
-          className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3 bg-gradient-to-b from-wedding-blush/10 to-white"
+          className="flex-1 overflow-y-auto px-5 py-5 flex flex-col gap-4 bg-gradient-to-b from-rose/5 via-purple/5 to-transparent"
         >
           {/* Completed messages */}
           {visibleMessages.map((msg, i) => (
@@ -165,16 +165,16 @@ function ChatDemo() {
         </div>
 
         {/* Chat input bar */}
-        <div className="px-4 py-3 border-t border-wedding-blush/20 flex items-center gap-2 bg-white shrink-0">
-          <div className="flex-1 bg-gray-50 rounded-full px-4 py-2 text-sm text-gray-400">
+        <div className="px-5 py-4 border-t border-rose/10 flex items-center gap-3 bg-white/50 backdrop-blur-sm shrink-0">
+          <div className="flex-1 bg-white/80 rounded-2xl px-5 py-3 text-sm text-gray-light font-medium border border-rose/10">
             Ask about your wedding...
           </div>
           <button
-            className="w-9 h-9 rounded-full bg-gradient-to-r from-wedding-coral to-wedding-salmon flex items-center justify-center shrink-0"
+            className="w-11 h-11 rounded-2xl bg-gradient-to-r from-rose via-purple to-amber flex items-center justify-center shrink-0 shadow-premium hover:shadow-premium-lg hover:scale-110 transition-all duration-300"
             tabIndex={-1}
             aria-hidden="true"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="22" y1="2" x2="11" y2="13" />
               <polygon points="22 2 15 22 11 13 2 9 22 2" />
             </svg>
