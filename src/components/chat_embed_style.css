@@ -124,35 +124,6 @@
   --chat--footer--color: #1a1a1a;
 }
 
-/* Custom file upload button styling */
-.chat-input-file-button {
-  position: relative !important;
-  width: auto !important;
-  padding: 0.5rem 1rem !important;
-  border-radius: 9999px !important;
-  background: rgba(240, 107, 92, 0.1) !important;
-  color: #F06B5C !important;
-  font-size: 0.875rem !important;
-  font-weight: 500 !important;
-  transition: all 0.2s ease !important;
-  border: 1px solid rgba(240, 107, 92, 0.3) !important;
-}
-
-.chat-input-file-button:hover {
-  background: rgba(240, 107, 92, 0.2) !important;
-  border-color: #F06B5C !important;
-}
-
-.chat-input-file-button::before {
-  content: '📷 Upload Image' !important;
-  font-size: 0.875rem !important;
-  margin-right: 0.25rem !important;
-}
-
-.chat-input-file-button svg {
-  display: none !important;
-}
-
 /* Fullscreen mode: constrain entire widget tree to container height */
 #n8n-chat-container,
 #n8n-chat-container > *,
@@ -199,25 +170,22 @@
 
 /* Footer — thin blush border like ChatDemo */
 .chat-footer {
-  border-top: 1px solid rgba(250, 212, 204, 0.2) !important;
   padding: 0.75rem 1rem !important;
 }
 
 /* Input wrapper — pill shape with gray bg like ChatDemo */
 .chat-inputs {
-  border-radius: 9999px !important;
   border: none !important;
-  background: #f9fafb !important;
   margin: 0 !important;
   overflow: hidden;
 }
 
-.chat-inputs:focus-within {
+.chat-inputs textarea:focus-within {
   background: #f3f4f6 !important;
 }
 
 /* Send button — coral gradient circle like ChatDemo */
-.chat-input-send-button {
+.chat-input-send-button, .chat-input-file-button {
   width: 2.25rem !important;
   height: 2.25rem !important;
   border-radius: 50% !important;
@@ -227,7 +195,7 @@
   transition: all 0.2s ease !important;
 }
 
-.chat-input-send-button:hover {
+.chat-input-send-button:hover, .chat-input-file-button:hover {
   opacity: 0.9 !important;
 }
 
@@ -268,4 +236,41 @@
 
 .chat-message-from-user svg path {
   fill: #ffffff !important;
+}
+
+/* Add spacing between input elements */
+.chat-inputs {
+  gap: 0.5rem !important;
+  padding: 0.375rem 0.5rem !important;
+}
+
+.chat-input-textarea {
+  margin: 0 0.25rem !important;
+}
+
+.chat-input-file-button {
+  margin-right: 0.25rem !important;
+}
+
+.chat-input-send-button {
+  margin-left: 0.25rem !important;
+}
+
+/* Custom file upload button styling */
+/* Hide the original paperclip icon and replace with camera */
+.chat-input-file-button svg {
+  color: white !important;
+  display: none !important;
+}
+
+/* Add camera icon using pseudo-element */
+.chat-input-file-button::before {
+  content: '' !important;
+  display: block !important;
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z'%3E%3C/path%3E%3Ccircle cx='12' cy='13' r='4'%3E%3C/circle%3E%3C/svg%3E") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
 }
