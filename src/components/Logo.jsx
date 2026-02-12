@@ -1,115 +1,61 @@
 function Logo({ className = "" }) {
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
+    <div className={`flex items-center ${className}`}>
       <div className="relative">
         <svg
-          width="48"
+          width="120"
           height="48"
-          viewBox="0 0 100 100"
+          viewBox="0 0 240 100"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"
           className="relative z-10"
         >
           <defs>
-            <linearGradient id="logo-gradient-main" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FF6B9D" />
-              <stop offset="50%" stopColor="#C084FC" />
-              <stop offset="100%" stopColor="#FCD34D" />
+            <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#fb7185" />
+              <stop offset="50%" stopColor="#a855f7" />
+              <stop offset="100%" stopColor="#fbbf24" />
             </linearGradient>
-            <linearGradient id="logo-gradient-inner" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FFB3CA" />
-              <stop offset="100%" stopColor="#D4A5FF" />
-            </linearGradient>
-            <filter id="glow">
-              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-              <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
           </defs>
 
-          {/* Outer decorative ring */}
-          <circle 
-            cx="50" 
-            cy="50" 
-            r="42" 
-            stroke="url(#logo-gradient-main)" 
-            strokeWidth="1.5" 
-            fill="none" 
-            opacity="0.2"
-          >
-            <animate 
-              attributeName="r" 
-              values="42;44;42" 
-              dur="4s" 
-              repeatCount="indefinite" 
-            />
-            <animate 
-              attributeName="opacity" 
-              values="0.2;0.3;0.2" 
-              dur="4s" 
-              repeatCount="indefinite" 
-            />
-          </circle>
+          {/* A */}
+          <path
+            d="M 20 75 L 40 25 L 60 75 L 52 75 L 48 62 L 32 62 L 28 75 Z M 35 55 L 45 55 L 40 38 Z"
+            fill="url(#logo-gradient)"
+          />
           
-          {/* Main heart shape */}
+          {/* M */}
           <path
-            d="M50 78 C50 78, 22 58, 22 38 C22 26, 30 18, 38 18 C44 18, 47 21, 50 27 C53 21, 56 18, 62 18 C70 18, 78 26, 78 38 C78 58, 50 78, 50 78Z"
-            fill="url(#logo-gradient-main)"
-            filter="url(#glow)"
+            d="M 70 75 L 70 30 L 85 60 L 95 30 L 95 75 L 88 75 L 88 45 L 80 70 L 90 70 L 82 45 L 82 75 Z"
+            fill="url(#logo-gradient)"
           />
-
-          {/* Inner heart highlight */}
+          
+          {/* O with heart inside */}
+          <circle cx="120" cy="52.5" r="17.5" stroke="url(#logo-gradient)" strokeWidth="5" fill="none"/>
+          
+          {/* Small heart in O */}
           <path
-            d="M50 70 C50 70, 28 54, 28 38 C28 29, 34 23, 40 23 C45 23, 48 25, 50 30 C52 25, 55 23, 60 23 C66 23, 72 29, 72 38 C72 54, 50 70, 50 70Z"
-            fill="url(#logo-gradient-inner)"
-            opacity="0.4"
+            d="M 120 58 C 120 58, 115 54, 115 51 C 115 49, 116.5 47.5, 118 47.5 C 119 47.5, 119.5 48, 120 49.5 C 120.5 48, 121 47.5, 122 47.5 C 123.5 47.5, 125 49, 125 51 C 125 54, 120 58, 120 58 Z"
+            fill="url(#logo-gradient)"
+            opacity="0.95"
           />
-
-          {/* AI Neural nodes */}
-          <circle cx="40" cy="42" r="2.5" fill="white" opacity="0.95">
-            <animate attributeName="opacity" values="0.95;0.6;0.95" dur="3s" repeatCount="indefinite" />
-          </circle>
-          <circle cx="60" cy="42" r="2.5" fill="white" opacity="0.95">
-            <animate attributeName="opacity" values="0.95;0.6;0.95" dur="3s" repeatCount="indefinite" begin="0.5s" />
-          </circle>
-          <circle cx="50" cy="54" r="3" fill="white" opacity="0.95">
-            <animate attributeName="opacity" values="0.95;0.6;0.95" dur="3s" repeatCount="indefinite" begin="1s" />
-          </circle>
-
-          {/* Neural connections */}
-          <line x1="40" y1="42" x2="50" y2="54" stroke="white" strokeWidth="1.5" opacity="0.5" strokeLinecap="round" />
-          <line x1="60" y1="42" x2="50" y2="54" stroke="white" strokeWidth="1.5" opacity="0.5" strokeLinecap="round" />
-          <line x1="40" y1="42" x2="60" y2="42" stroke="white" strokeWidth="1.5" opacity="0.5" strokeLinecap="round" />
-
-          {/* Sparkle decorations */}
-          <g opacity="0.8">
-            <path d="M50 12 L51 16 L50 20 L49 16 Z" fill="#FF6B9D">
-              <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite" />
-            </path>
-            <path d="M84 36 L88 37 L84 38 L80 37 Z" fill="#C084FC">
-              <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite" begin="0.5s" />
-            </path>
-            <path d="M16 36 L20 37 L16 38 L12 37 Z" fill="#FCD34D">
-              <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" repeatCount="indefinite" begin="1s" />
-            </path>
-          </g>
+          
+          {/* R */}
+          <path
+            d="M 150 75 L 150 30 L 170 30 C 177 30, 182 35, 182 42 C 182 48, 178 52, 172 53 L 183 75 L 174 75 L 164 54 L 157 54 L 157 75 Z M 157 37 L 157 47 L 169 47 C 173 47, 175 45, 175 42 C 175 39, 173 37, 169 37 Z"
+            fill="url(#logo-gradient)"
+          />
+          
+          {/* E */}
+          <path
+            d="M 193 75 L 193 30 L 223 30 L 223 37 L 200 37 L 200 48 L 220 48 L 220 55 L 200 55 L 200 68 L 223 68 L 223 75 Z"
+            fill="url(#logo-gradient)"
+          />
         </svg>
         
-        {/* Glow effect behind logo */}
-        <div className="absolute inset-0 bg-gradient-to-br from-rose/20 via-purple/20 to-amber/20 blur-xl rounded-full -z-10 animate-pulse-glow"></div>
-      </div>
-
-      {/* Wordmark */}
-      <div className="flex flex-col leading-none">
-        <span className="text-2xl font-bold tracking-tight bg-gradient-to-r from-rose via-purple to-amber bg-clip-text text-transparent">
-          Amore
-        </span>
-        <span className="text-[0.65rem] font-semibold tracking-[0.25em] uppercase text-gray-light">
-          AI WEDDING
-        </span>
+        {/* Subtle glow */}
+        <div className="absolute inset-0 bg-gradient-to-br from-rose/20 via-purple/20 to-amber/20 blur-lg rounded-full -z-10"></div>
       </div>
     </div>
   );
