@@ -96,7 +96,7 @@ function FeaturesTestimonials() {
   ];
 
   return (
-    <div className="w-full h-[600px] flex items-stretch">
+    <div className="w-full h-[500px] sm:h-[600px] flex items-stretch">
       <div className="w-full bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-wedding-blush/50 flex flex-col overflow-hidden">
         {/* Progress Bar */}
         <div className="h-1 bg-gray-200 shrink-0">
@@ -113,7 +113,7 @@ function FeaturesTestimonials() {
         <div className="flex border-b border-wedding-blush/50 shrink-0">
           <button
             onClick={() => handleTabClick('features')}
-            className={`flex-1 py-4 px-6 font-semibold text-lg transition-all duration-200 ${
+            className={`flex-1 py-3 sm:py-4 px-4 sm:px-6 font-semibold text-base sm:text-lg transition-all duration-200 ${
               activeTab === 'features'
                 ? 'bg-gradient-to-r from-wedding-coral to-wedding-salmon text-white'
                 : 'text-gray-600 hover:bg-wedding-blush/20'
@@ -123,41 +123,42 @@ function FeaturesTestimonials() {
           </button>
           <button
             onClick={() => handleTabClick('testimonials')}
-            className={`flex-1 py-4 px-6 font-semibold text-lg transition-all duration-200 ${
+            className={`flex-1 py-3 sm:py-4 px-4 sm:px-6 font-semibold text-base sm:text-lg transition-all duration-200 ${
               activeTab === 'testimonials'
                 ? 'bg-gradient-to-r from-wedding-coral to-wedding-salmon text-white'
                 : 'text-gray-600 hover:bg-wedding-blush/20'
             }`}
           >
-            What Couples Say
+            <span className="hidden sm:inline">What Couples Say</span>
+            <span className="sm:hidden">Testimonials</span>
           </button>
         </div>
 
         {/* Tab Content */}
-        <div className="flex-1 overflow-y-auto p-8">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-8">
           {activeTab === 'features' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="p-6 rounded-xl bg-white/50 border border-wedding-blush/30 hover:shadow-lg hover:scale-105 transition-all duration-200"
+                  className="p-4 sm:p-6 rounded-xl bg-white/50 border border-wedding-blush/30 hover:shadow-lg hover:scale-105 transition-all duration-200"
                 >
-                  <div className="text-wedding-coral mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
+                  <div className="text-wedding-coral mb-3 sm:mb-4">{feature.icon}</div>
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">{feature.title}</h3>
+                  <p className="text-sm sm:text-base text-gray-600">{feature.description}</p>
                 </div>
               ))}
             </div>
           )}
 
           {activeTab === 'testimonials' && (
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="p-6 rounded-xl bg-white/50 border border-wedding-blush/30 hover:shadow-lg transition-all duration-200"
+                  className="p-4 sm:p-6 rounded-xl bg-white/50 border border-wedding-blush/30 hover:shadow-lg transition-all duration-200"
                 >
-                  <p className="text-gray-700 italic mb-4 text-lg">"{testimonial.quote}"</p>
+                  <p className="text-gray-700 italic mb-3 sm:mb-4 text-base sm:text-lg">"{testimonial.quote}"</p>
                   <div className="text-sm">
                     <p className="font-semibold text-wedding-coral">{testimonial.author}</p>
                     <p className="text-gray-500">{testimonial.location}</p>

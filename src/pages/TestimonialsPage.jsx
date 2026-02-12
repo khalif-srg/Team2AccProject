@@ -30,56 +30,56 @@ function TestimonialsPage() {
       <Navigation />
 
       {/* Main Content */}
-      <main className="relative z-10 flex-1 px-6 py-16">
+      <main className="relative z-10 flex-1 px-4 sm:px-6 py-8 sm:py-16">
         <div className="max-w-5xl mx-auto">
           {/* Page Title */}
-          <div className="text-center mb-16">
-            <h1 className="text-5xl font-bold mb-4 text-white leading-tight drop-shadow-md">
+          <div className="text-center mb-12 sm:mb-16">
+            <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white leading-tight drop-shadow-md">
               What Couples Are Saying
             </h1>
-            <p className="text-xl text-white/90 drop-shadow">
+            <p className="text-lg sm:text-xl text-white/90 drop-shadow px-4">
               Real stories from couples who planned their dream weddings with us
             </p>
           </div>
 
           {/* Testimonials Grid */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-wedding-blush/50 p-8 hover:shadow-xl transition-all duration-200"
+                className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-wedding-blush/50 p-6 sm:p-8 hover:shadow-xl transition-all duration-200"
               >
-                <div className="mb-6">
+                <div className="mb-4 sm:mb-6">
                   <svg
-                    className="w-12 h-12 text-wedding-coral/30 mb-4"
+                    className="w-10 h-10 sm:w-12 sm:h-12 text-wedding-coral/30 mb-3 sm:mb-4"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                   </svg>
-                  <p className="text-2xl text-gray-800 italic mb-6">
+                  <p className="text-xl sm:text-2xl text-gray-800 italic mb-4 sm:mb-6">
                     "{testimonial.quote}"
                   </p>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed text-base sm:text-base">
                     {testimonial.details}
                   </p>
                 </div>
                 <div className="border-t border-wedding-blush/30 pt-4">
-                  <p className="font-bold text-lg text-wedding-coral">
+                  <p className="font-bold text-base sm:text-lg text-wedding-coral">
                     {testimonial.author}
                   </p>
-                  <p className="text-gray-500">{testimonial.location}</p>
+                  <p className="text-sm sm:text-base text-gray-500">{testimonial.location}</p>
                 </div>
               </div>
             ))}
           </div>
 
           {/* CTA Section */}
-          <div className="mt-16 text-center">
-            <h2 className="text-3xl font-bold text-white mb-6 drop-shadow-md">
+          <div className="mt-12 sm:mt-16 text-center px-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6 drop-shadow-md">
               Ready to Plan Your Dream Wedding?
             </h2>
-            <Button size="lg" asChild className="rounded-full bg-gradient-to-r from-wedding-coral via-wedding-rose to-wedding-salmon text-white font-semibold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg px-12 py-4 h-auto">
+            <Button size="lg" asChild className="rounded-full bg-gradient-to-r from-wedding-coral via-wedding-rose to-wedding-salmon text-white font-semibold shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 text-base sm:text-lg px-8 sm:px-12 py-3 sm:py-4 h-auto">
               <Link to="/chat">Get Started Now</Link>
             </Button>
           </div>
