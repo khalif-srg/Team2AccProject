@@ -136,7 +136,7 @@ function ChatDemo() {
             </svg>
           </div>
           <div className="flex-1">
-            <div className="text-white font-bold text-base">Amore AI</div>
+            <div className="text-white font-bold text-base">Amore</div>
             <div className="text-white/90 text-xs flex items-center gap-1.5 font-medium">
               <span className="w-2 h-2 rounded-full bg-emerald animate-pulse shadow-sm"></span>
               Always here for you
