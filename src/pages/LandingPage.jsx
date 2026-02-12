@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import Logo from '@/components/Logo';
 import ChatDemo from '@/components/ChatDemo';
-import ImageUpload from '@/components/ImageUpload';
+import FeaturesTestimonials from '@/components/FeaturesTestimonials';
 
 function LandingPage() {
   return (
@@ -16,7 +16,7 @@ function LandingPage() {
               <a href="#how-it-works">How it works</a>
             </Button>
             <Button variant="outline" asChild className="rounded-full border-wedding-blush text-gray-700 font-medium hover:bg-wedding-blush/40 hover:text-wedding-coral">
-              <a href="#testimonials">Testimonials</a>
+              <Link to="/testimonials">Testimonials</Link>
             </Button>
             <Button asChild className="rounded-full bg-gradient-to-r from-wedding-coral to-wedding-salmon text-white font-medium hover:shadow-lg hover:scale-105 transition-all duration-200">
               <Link to="/chat">Start Planning</Link>
@@ -45,9 +45,9 @@ function LandingPage() {
               <ChatDemo />
             </div>
 
-            {/* Image Upload Section */}
+            {/* Features and Testimonials Section */}
             <div className="min-h-[600px]">
-              <ImageUpload />
+              <FeaturesTestimonials />
             </div>
           </div>
         </div>
