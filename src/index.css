@@ -91,6 +91,48 @@
   --chat--footer--color: #0F0F0F;
 }
 
+.dark {
+  /* Dark mode color system */
+  --background: #0F0F0F;
+  --foreground: #FDFCFB;
+  --card: #1A1A1A;
+  --card-foreground: #FDFCFB;
+  --popover: #1A1A1A;
+  --popover-foreground: #FDFCFB;
+  --primary: #FF6B9D;
+  --primary-foreground: #FFFFFF;
+  --secondary: #2A1A1F;
+  --secondary-foreground: #FDFCFB;
+  --muted: #1F1A1B;
+  --muted-foreground: #9CA3AF;
+  --accent: #C084FC;
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --border: #3A2A2F;
+  --input: #3A2A2F;
+  --ring: #FF6B9D;
+  --sidebar: #1A1A1A;
+  --sidebar-foreground: #FDFCFB;
+  --sidebar-primary: #FF6B9D;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #2A1A1F;
+  --sidebar-accent-foreground: #FDFCFB;
+  --sidebar-border: #3A2A2F;
+  --sidebar-ring: #FF6B9D;
+
+  /* Dark mode chat widget */
+  --chat--color-white: #1A1A1A;
+  --chat--color-light-shade-50: #1F1A1B;
+  --chat--color-light-shade-100: #2A1A1F;
+  --chat--color-medium: #3A2A2F;
+  --chat--color-typing: #FDFCFB;
+  --chat--message--bot--background: #1A1A1A;
+  --chat--message--bot--color: #FDFCFB;
+  --chat--input--background: #1A1A1A;
+  --chat--input--text-color: #FDFCFB;
+  --chat--footer--color: #FDFCFB;
+}
+
 @theme inline {
   --font-geist: 'Geist', ui-sans-serif, system-ui, sans-serif;
 
@@ -161,6 +203,16 @@
   );
 }
 
+.dark .bg-premium-gradient {
+  background: linear-gradient(
+    180deg,
+    #0F0F0F 0%,
+    #1A1214 30%,
+    #1F1518 60%,
+    #2A1A1F 100%
+  );
+}
+
 .bg-premium-gradient::before {
   content: '';
   position: absolute;
@@ -212,11 +264,21 @@
   border: 1px solid rgba(255, 228, 236, 0.5);
 }
 
+.dark .glass {
+  background: rgba(26, 26, 26, 0.7);
+  border: 1px solid rgba(58, 42, 47, 0.5);
+}
+
 .glass-strong {
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(30px) saturate(200%);
   -webkit-backdrop-filter: blur(30px) saturate(200%);
   border: 1px solid rgba(255, 228, 236, 0.6);
+}
+
+.dark .glass-strong {
+  background: rgba(26, 26, 26, 0.85);
+  border: 1px solid rgba(58, 42, 47, 0.6);
 }
 
 /* Premium shadows */

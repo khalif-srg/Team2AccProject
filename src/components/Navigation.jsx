@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import Logo from '@/components/Logo';
+import ThemeToggle from '@/components/ThemeToggle';
 
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,6 +20,7 @@ function Navigation() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
+            <ThemeToggle />
             <Button 
               variant="ghost" 
               asChild 
@@ -77,8 +79,11 @@ function Navigation() {
 
       {/* Mobile Navigation Menu */}
       {isMenuOpen && (
-        <div className="md:hidden border-t border-rose/10 bg-white/95 backdrop-blur-xl">
+        <div className="md:hidden border-t border-rose/10 bg-white/95 backdrop-blur-xl dark:bg-gray-900/95">
           <nav className="flex flex-col gap-2 px-4 py-4">
+            <div className="mb-2">
+              <ThemeToggle />
+            </div>
             <Button 
               variant="ghost" 
               asChild 
