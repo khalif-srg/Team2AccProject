@@ -180,8 +180,12 @@
   overflow: hidden;
 }
 
-.chat-inputs textarea:focus-within {
+.chat-inputs textarea:hover {
   background: #f3f4f6 !important;
+}
+
+.chat-inputs textarea:focus-within {
+  background: #e8e9eb !important;
 }
 
 /* Send button — coral gradient circle like ChatDemo */
