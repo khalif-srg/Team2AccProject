@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import Logo from '@/components/Logo';
 import ChatDemo from '@/components/ChatDemo';
+import ImageUpload from '@/components/ImageUpload';
 
 function LandingPage() {
   return (
@@ -25,8 +26,8 @@ function LandingPage() {
       </header>
 
       {/* Hero Section */}
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 py-16">
-        <div className="text-center max-w-5xl w-full">
+      <main className="relative z-10 flex-1 flex flex-col items-center justify-start px-6 py-16 pb-32">
+        <div className="text-center w-full max-w-7xl">
           {/* Heading */}
           <h1 className="text-6xl font-bold mb-12 text-white leading-tight drop-shadow-md">
             Create Your Dream Wedding!
@@ -37,9 +38,17 @@ function LandingPage() {
             <Link to="/chat">Start Planning</Link>
           </Button>
 
-          {/* Animated chat demo */}
-          <div className="mt-16 mb-20">
-            <ChatDemo />
+          {/* Chat Demo and Image Upload Side by Side */}
+          <div className="mt-16 mb-20 grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-[600px] w-full">
+            {/* Animated chat demo */}
+            <div className="h-[600px]">
+              <ChatDemo />
+            </div>
+
+            {/* Image Upload Section */}
+            <div className="min-h-[600px]">
+              <ImageUpload />
+            </div>
           </div>
         </div>
       </main>
