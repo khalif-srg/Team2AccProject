@@ -11,7 +11,7 @@ function Navigation() {
         </Link>
         <nav className="flex gap-3">
           <Button variant="outline" asChild className="rounded-full border-wedding-blush text-gray-700 font-medium hover:bg-wedding-blush/40 hover:text-wedding-coral">
-            <a href="#how-it-works">How it works</a>
+            <Link to="/about">About Us</Link>
           </Button>
           <Button variant="outline" asChild className="rounded-full border-wedding-blush text-gray-700 font-medium hover:bg-wedding-blush/40 hover:text-wedding-coral">
             <Link to="/testimonials">Testimonials</Link>
