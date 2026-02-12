@@ -241,3 +241,31 @@
 .chat-message-from-user * {
   color: #ffffff !important;
 }
+
+/* File elements in user messages - target specific classes */
+.chat-message-from-user .chat-file {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* File name text */
+.chat-message-from-user .chat-file-name {
+  color: #ffffff !important;
+}
+
+/* File icons */
+.chat-message-from-user .chat-icon,
+.chat-message-from-user .chat-file-preview {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+/* All SVG elements in user messages */
+.chat-message-from-user svg {
+  color: #ffffff !important;
+  fill: currentColor !important;
+}
+
+.chat-message-from-user svg path {
+  fill: #ffffff !important;
+}
