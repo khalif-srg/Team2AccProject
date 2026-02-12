@@ -45,7 +45,7 @@ function AboutPage() {
                 </div>
               </div>
               <p className="text-gray text-lg sm:text-xl leading-relaxed">
-                We believe every couple deserves a stress-free wedding planning experience. Our AI-powered platform combines cutting-edge technology with personalized service to help you create the wedding of your dreams without the overwhelm. We're here to transform wedding planning from overwhelming to extraordinary.
+                We believe every couple deserves a stress-free wedding planning experience. Our AI-powered platform combines cutting-edge technology with personalised service to help you create the wedding of your dreams without the overwhelm. We're here to transform wedding planning from overwhelming to extraordinary.
               </p>
             </div>
 
@@ -67,7 +67,7 @@ function AboutPage() {
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 {[
-                  { icon: <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>, title: 'Smart Recommendations', desc: 'Personalized suggestions based on your style and budget' },
+                  { icon: <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>, title: 'Smart Recommendations', desc: 'Personalised suggestions based on your style and budget' },
                   { icon: <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>, title: 'Budget Tracking', desc: 'Real-time expense management and cost breakdowns' },
                   { icon: <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>, title: 'Vendor Network', desc: 'Curated connections with trusted professionals' },
                   { icon: <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>, title: 'Timeline Management', desc: 'Automated reminders and milestone tracking' }
@@ -97,7 +97,7 @@ function AboutPage() {
                 </div>
               </div>
               <p className="text-gray text-lg sm:text-xl leading-relaxed mb-6">
-                Planning a wedding shouldn't feel like a full-time job. We've helped thousands of couples turn their vision into reality while staying organized, on budget, and stress-free.
+                Planning a wedding shouldn't feel like a full-time job. We've helped thousands of couples turn their vision into reality while staying organised, on budget, and stress-free.
               </p>
               <p className="text-gray text-lg sm:text-xl leading-relaxed">
                 Our AI learns your preferences and adapts to your needs, making the entire process feel natural and enjoyable. Whether you're just starting to plan or need help with the final details, we're here to support you every step of the way.
@@ -136,7 +136,7 @@ function AboutPage() {
       {/* Footer */}
       <footer className="relative z-10 glass-strong border-t border-rose/10 py-10 text-center mt-16">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-gray mb-3 font-medium">&copy; 2024 Amore AI Wedding Planner</div>
+          <div className="text-gray mb-3 font-medium">&copy; 2026 Amore AI Wedding Planner</div>
           <div className="flex justify-center gap-8 text-sm text-gray-light mb-6">
             <a href="#" className="hover:text-rose transition-colors duration-300">Privacy</a>
             <a href="#" className="hover:text-purple transition-colors duration-300">Terms</a>

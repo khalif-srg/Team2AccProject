@@ -7,7 +7,7 @@ function TestimonialsPage() {
     {
       quote: "This app made planning our wedding so much easier! The AI suggestions were spot-on and saved us countless hours of research.",
       author: "Sarah & Michael",
-      location: "San Francisco, CA",
+      location: "Melbourne, VIC",
       details: "We were overwhelmed with all the decisions we had to make, but the AI planner helped us narrow down our options based on our style and budget. The timeline feature kept us on track throughout the entire process.",
       rating: 5,
       icon: <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
@@ -15,7 +15,7 @@ function TestimonialsPage() {
     {
       quote: "We stayed under budget thanks to the expense tracking feature. Highly recommend to any couple planning their big day!",
       author: "Jessica & David",
-      location: "Austin, TX",
+      location: "Melbourne, VIC",
       details: "The budget tracker was a game-changer. We could see exactly where our money was going and got alerts when we were approaching our limits. It took so much stress out of the planning process.",
       rating: 5,
       icon: <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
@@ -23,7 +23,7 @@ function TestimonialsPage() {
     {
       quote: "The vendor recommendations were incredible. We found our dream photographer and venue through this platform.",
       author: "Emily & James",
-      location: "New York, NY",
+      location: "Melbourne, VIC",
       details: "We were struggling to find vendors that matched our vision and budget. The curated vendor network connected us with amazing professionals who understood exactly what we wanted.",
       rating: 5,
       icon: <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
@@ -180,7 +180,7 @@ function TestimonialsPage() {
       {/* Footer */}
       <footer className="relative z-10 glass-strong border-t border-rose/10 py-10 text-center mt-16">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-gray mb-3 font-medium">&copy; 2024 Amore AI Wedding Planner</div>
+          <div className="text-gray mb-3 font-medium">&copy; 2026 Amore AI Wedding Planner</div>
           <div className="flex justify-center gap-8 text-sm text-gray-light mb-6">
             <a href="#" className="hover:text-rose transition-colors duration-300">Privacy</a>
             <a href="#" className="hover:text-purple transition-colors duration-300">Terms</a>

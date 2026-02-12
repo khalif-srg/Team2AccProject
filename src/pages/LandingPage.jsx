@@ -140,21 +140,21 @@ function LandingPage() {
                 step: '1',
                 icon: <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>,
                 title: 'Chat with AI',
-                desc: 'Tell us your vision, budget, and preferences in a natural conversation',
+                desc: 'Tell us your vision, budget, and preferences in a natural conversation or just provide an image!',
                 time: '2 min'
               },
               {
                 step: '2',
                 icon: <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
                 title: 'Get Your Plan',
-                desc: 'Receive a personalized wedding plan with vendors, timeline, and budget',
+                desc: 'Receive a personalised wedding plan with vendors, catering and budget',
                 time: '5 min'
               },
               {
                 step: '3',
                 icon: <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" /></svg>,
                 title: 'Book & Relax',
-                desc: 'Connect with vendors, track progress, and enjoy stress-free planning',
+                desc: 'Let us connect with vendors for you and enjoy stress-free planning',
                 time: 'Ongoing'
               }
             ].map((step, i) => (
@@ -255,7 +255,7 @@ function LandingPage() {
       {/* Footer */}
       <footer className="glass-strong border-t border-rose/10 py-8 text-center">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-gray mb-3 font-medium">&copy; 2024 Amore AI Wedding Planner</div>
+          <div className="text-gray mb-3 font-medium">&copy; 2026 Amore AI Wedding Planner</div>
           <div className="flex justify-center gap-8 text-sm text-gray-light">
             <a href="#" className="hover:text-rose transition-colors duration-300">Privacy</a>
             <a href="#" className="hover:text-purple transition-colors duration-300">Terms</a>
