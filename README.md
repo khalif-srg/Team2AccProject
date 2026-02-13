@@ -1,73 +1,118 @@
-# React + TypeScript + Vite
+# Amore AI Wedding Planner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An AI-powered wedding planning application that helps couples plan their dream wedding with personalized recommendations, budget tracking, and vendor connections.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- AI-powered wedding planning assistant
+- Budget tracking and cost breakdowns
+- Curated vendor network
+- Image-based inspiration support
+- Dark mode support
+- Fully responsive design
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend Framework**: React
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Routing**: React Router DOM
+- **Chat Integration**: n8n Chat Widget
+- **Icons**: Lucide React
 
-## Expanding the ESLint configuration
+## Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Before you begin, ensure you have the following installed:
+- Node.js (v18 or higher)
+- npm or yarn package manager
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd team2accproject
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. Install dependencies:
+```bash
+npm install
 ```
+
+## Configuration
+
+### n8n Chat Integration
+
+The application uses n8n for the AI chat functionality. To configure:
+
+1. Open `src/config/chatConfig.js`
+2. Update the webhook URL with your n8n instance:
+
+```javascript
+export const chatConfig = {
+  webhookUrl: 'https://your-n8n-instance.app.n8n.cloud/webhook/your-webhook-id',
+  instanceId: 'your-instance-id'
+};
+```
+
+3. Configure your n8n workflow with:
+   - Webhook trigger
+   - AI agent/LLM integration
+   - Response formatting
+
+## Development
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:5173`
+
+## Building for Production
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+## Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+│   ├── ui/             # ui components
+│   ├── ChatDemo.jsx    # Landing page chat demo
+│   ├── ChatEmbed.jsx   # n8n chat integration
+│   ├── FeaturesTestimonials.jsx
+│   ├── Logo.jsx
+│   └── Navigation.jsx
+├── pages/              # Page components
+│   ├── LandingPage.jsx
+│   ├── ChatPage.jsx
+│   ├── AboutPage.jsx
+│   └── TestimonialsPage.jsx
+├── config/             # Configuration files
+│   └── chatConfig.js   # n8n chat configuration
+├── lib/                # Utility functions
+│   └── utils.js
+├── App.jsx             # Main app component
+├── main.jsx            # Application entry point
+└── index.css           # Global styles & theme
+```
+
+## License
+
+This project is private and proprietary.
+
+## Support
+
+For support, please contact the development team or open an issue in the repository.
