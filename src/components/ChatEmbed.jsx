@@ -1,12 +1,42 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
 import '@n8n/chat/style.css';
 import { createChat } from '@n8n/chat';
 import './chat_embed_style.css';
 import { chatConfig } from '../config/chatConfig';
 
-function ChatEmbed({ embedUrl }) {
+const ChatEmbed = forwardRef(({ embedUrl }, ref) => {
   const chatContainerRef = useRef(null);
   const chatInstanceRef = useRef(null);
+
+  // Expose sendMessage method to parent component
+  useImperativeHandle(ref, () => ({
+    sendMessage: (message) => {
+      if (chatInstanceRef.current && message) {
+        // Try to send message through the chat instance
+        try {
+          // Access the chat input and simulate user input
+          const chatInput = document.querySelector('#n8n-chat-container textarea, #n8n-chat-container input[type="text"]');
+          const sendButton = document.querySelector('#n8n-chat-container button[type="submit"]');
+          
+          if (chatInput && sendButton) {
+            // Set the input value
+            chatInput.value = message;
+            
+            // Trigger input event
+            const inputEvent = new Event('input', { bubbles: true });
+            chatInput.dispatchEvent(inputEvent);
+            
+            // Small delay to ensure the input is processed
+            setTimeout(() => {
+              sendButton.click();
+            }, 100);
+          }
+        } catch (error) {
+          console.error('Failed to send message:', error);
+        }
+      }
+    }
+  }));
 
   // Validate embedUrl
   const isValidUrl = embedUrl && typeof embedUrl === 'string' && embedUrl.trim().length > 0;
@@ -85,6 +115,8 @@ function ChatEmbed({ embedUrl }) {
       className="w-full h-full"
     />
   );
-}
+});
+
+ChatEmbed.displayName = 'ChatEmbed';
 
 export default ChatEmbed;

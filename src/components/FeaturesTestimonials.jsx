@@ -72,8 +72,8 @@ function FeaturesTestimonials() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
       ),
-      title: 'Timeline Management',
-      description: 'Never miss a deadline with automated reminders and milestone tracking'
+      title: 'Vendor Outreach',
+      description: 'We email and contact vendors for you - venues, catering, and more'
     }
   ];
 
@@ -96,72 +96,74 @@ function FeaturesTestimonials() {
   ];
 
   return (
-    <div className="w-full h-[500px] sm:h-[600px] flex items-stretch">
-      <div className="w-full bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-wedding-blush/50 flex flex-col overflow-hidden">
-        {/* Progress Bar */}
-        <div className="h-1 bg-gray-200 shrink-0">
+    <div className="w-full h-[550px] sm:h-[650px] flex items-stretch">
+      <div className="w-full glass-strong rounded-3xl shadow-premium-lg border border-rose/20 flex flex-col overflow-hidden hover:shadow-premium-lg transition-all duration-500">
+        {/* Premium Progress Bar */}
+        <div className="h-1.5 bg-rose/10 shrink-0 relative overflow-hidden">
           <div 
-            className="h-full bg-gradient-to-r from-wedding-coral to-wedding-salmon"
+            className="h-full bg-gradient-to-r from-rose via-purple to-amber relative"
             style={{ 
               width: `${progress}%`,
               transition: 'none'
             }}
-          />
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
+          </div>
         </div>
 
         {/* Tab Headers */}
-        <div className="flex border-b border-wedding-blush/50 shrink-0">
+        <div className="flex border-b border-rose/10 shrink-0">
           <button
             onClick={() => handleTabClick('features')}
-            className={`flex-1 py-3 sm:py-4 px-4 sm:px-6 font-semibold text-base sm:text-lg transition-all duration-200 ${
+            className={`flex-1 py-4 sm:py-5 px-4 sm:px-6 font-bold text-base sm:text-lg transition-all duration-300 ${
               activeTab === 'features'
-                ? 'bg-gradient-to-r from-wedding-coral to-wedding-salmon text-white'
-                : 'text-gray-600 hover:bg-wedding-blush/20'
+                ? 'bg-gradient-to-r from-rose via-purple to-amber text-white shadow-premium'
+                : 'text-gray hover:bg-rose/5 hover:text-foreground'
             }`}
           >
             Features
           </button>
           <button
             onClick={() => handleTabClick('testimonials')}
-            className={`flex-1 py-3 sm:py-4 px-4 sm:px-6 font-semibold text-base sm:text-lg transition-all duration-200 ${
+            className={`flex-1 py-4 sm:py-5 px-4 sm:px-6 font-bold text-base sm:text-lg transition-all duration-300 ${
               activeTab === 'testimonials'
-                ? 'bg-gradient-to-r from-wedding-coral to-wedding-salmon text-white'
-                : 'text-gray-600 hover:bg-wedding-blush/20'
+                ? 'bg-gradient-to-r from-rose via-purple to-amber text-white shadow-premium'
+                : 'text-gray hover:bg-rose/5 hover:text-foreground'
             }`}
           >
-            <span className="hidden sm:inline">What Couples Say</span>
-            <span className="sm:hidden">Testimonials</span>
+            <span className="hidden sm:inline">Love Stories</span>
+            <span className="sm:hidden">Stories</span>
           </button>
         </div>
 
         {/* Tab Content */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-8">
+        <div className="flex-1 overflow-y-auto p-5 sm:p-8">
           {activeTab === 'features' && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="p-4 sm:p-6 rounded-xl bg-white/50 border border-wedding-blush/30 hover:shadow-lg hover:scale-105 transition-all duration-200"
+                  className="p-5 sm:p-6 rounded-2xl glass border border-rose/10 hover:border-rose/30 hover:shadow-premium hover:scale-105 transition-all duration-300 group"
                 >
-                  <div className="text-wedding-coral mb-3 sm:mb-4">{feature.icon}</div>
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">{feature.title}</h3>
-                  <p className="text-sm sm:text-base text-gray-600">{feature.description}</p>
+                  <div className="text-rose mb-4 group-hover:scale-110 transition-transform duration-300">{feature.icon}</div>
+                  <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2.5">{feature.title}</h3>
+                  <p className="text-sm sm:text-base text-gray leading-relaxed">{feature.description}</p>
                 </div>
               ))}
             </div>
           )}
 
           {activeTab === 'testimonials' && (
-            <div className="space-y-4 sm:space-y-6">
+            <div className="space-y-5 sm:space-y-6">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="p-4 sm:p-6 rounded-xl bg-white/50 border border-wedding-blush/30 hover:shadow-lg transition-all duration-200"
+                  className="p-5 sm:p-6 rounded-2xl glass border border-rose/10 hover:border-rose/30 hover:shadow-premium transition-all duration-300"
                 >
-                  <p className="text-gray-700 italic mb-3 sm:mb-4 text-base sm:text-lg">"{testimonial.quote}"</p>
-                  <div className="text-sm">
-                    <p className="font-semibold text-wedding-coral">{testimonial.author}</p>
-                    <p className="text-gray-500">{testimonial.location}</p>
+                  <p className="text-foreground italic mb-4 text-base sm:text-lg leading-relaxed font-medium">"{testimonial.quote}"</p>
+                  <div className="text-sm border-t border-rose/10 pt-4">
+                    <p className="font-bold bg-gradient-to-r from-rose via-purple to-amber bg-clip-text text-transparent">{testimonial.author}</p>
+                    <p className="text-gray-light">{testimonial.location}</p>
                   </div>
                 </div>
               ))}
