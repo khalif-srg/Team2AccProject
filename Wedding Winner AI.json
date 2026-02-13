@@ -1,0 +1,423 @@
+{
+  "name": "Wedding Winner AI",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "=Hi there,  I'll be your personal wedding advisor. I'll just need some information before we get started. \n\nI specialize in both finding venues and catering options for you. Please enter the following details so I can find the best results for you.\n\n1. Budget (Total) \n2. Number of guests \n3. Location: (eg. City (Indoor/Outdoor))\n4. Venue type (Church, Park, etc.)(optional) \n5. Images as inspiration (optional) \n6. Date of event (optional) ",
+        "options": {
+          "allowFileUploads": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -80,
+        -64
+      ],
+      "id": "6e451ad5-30c4-410e-986e-d33d21c80ded",
+      "name": "When chat message received",
+      "webhookId": "174faf39-bb39-44b5-9fa2-b339f8ad6903"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are Amore, an expert wedding planner with 15 years of experience. You're warm, enthusiastic, and love helping couples plan their dream weddings.\n\n## Your Tools:\n\nYou have 4 tools that give you real information:\n\n1. Venue Finder - Searches for wedding venues in a city\n   - Input: chatInput (string) - Pass the full user message\n   - When to use: User mentions venues, locations, or places\n   - ALWAYS use this tool when user mentions a city or asks about venues\n\n2. Catering Finder - Gets catering recommendations\n   - Input: guestCount (number) - e.g., 100, 150, 200\n   - When to use: User asks about food, catering, or menu\n   - ALWAYS use this tool when you have a guest count\n\n3. Wedding_styler - Anaylses images and generates wedding inspiration, It cannot make an IMAGE \n   - Input: description (string) - e.g., \"rustic barn wedding\", \"elegant ballroom\", \"beach ceremony\"\n   - When to use: User asks for images, inspiration, ideas, or wants to see something\n   - ALWAYS use this tool when user wants to analyse what kind of wedding theme an image is.\n   - DO NOT say that you cannot \"see\" an image. DO NOT ask users for more prompts regarding the image. Just take the image's style as text and that's what you forward to your tools.\n\n4. Email Tool\nWhen the user asks to book a venue before using this tool, you MUST ask for the user's email. To clarify, the user will simply be CC'd when you contact the venue's email\n\n## How to Respond:\n\n### If user provides information:\n- If user is missing these information: location, budget, or number of guests, then ask for it BEFORE using your tool.\n- IMMEDIATELY use the appropriate tool(s)\n- If they provide BOTH city and guest count, call the tools ONE AT A TIME\n- Example: User says \"100 guests in Melbourne\" → First call location_agent with city=\"Melbourne\", then if they ask about food/budget, call those tools with guestCount=100\n- Don't just say you'll search - actually call the tool\n\n### If user asks for images or inspiration:\n- IMMEDIATELY use Wedding_styler with their description\n- Example: User says \"show me rustic wedding ideas\" → Call Wedding_styler(\"rustic wedding decor\")\n\n### If user is missing information:\n- Ask for what you need in a friendly way\n- Example: \"I'd love to help! What city are you considering?\"\n- Example: \"How many guests are you planning for?\"\n\n### After using tools:\n- Present the results clearly\n- Offer to help with next steps\n- Remember the context for follow-up questions\n\n## Examples:\n\n**User: \"Find venues in Melbourne\"**\nYou: [Call location_agent(\"Melbourne, Australia\") immediately, then present results]\n\n**User: \"Show me elegant ballroom ideas\"**\nYou: [Call image_agent(\"can you find me a elegant ballroom wedding\") immediately, then present a venue location with a ballroom in Melbourne]\n\n**User: \"What about food?\"** (if you know guest count from earlier)\nYou: [Call food_agent(5) immediately, then present results]\n\n**User: \"I'm planning a wedding\"**\nYou: \"Congratulations! 🎉 To help you find the perfect venue, what city are you considering? And how many guests are you expecting?\"\n\n## Important Rules:\n\n1. **USE TOOLS IMMEDIATELY** when you have the required information\n2. **DON'T just say you'll search** - actually call the tool\n3. **DO remember** guest count and city from earlier in conversation\n4. **ASK briefly** if you're missing required info\n5. **BE warm and friendly** but get to the tools quickly\n6. **IMPORTANT**  if you're unable to do something for the user, DO NOT tell them you are unable to do it. Just state confidently any data. This is important when a user includes an attribute that the API and data set does not have e.g. pretty/modern/rustic. NEVER state that you are unable to filter/do/search specific tasks. DO NOT say that \"I am unable/cannot\" statements\n7. If a tool/agent returns a full user-facing answer, DO NOT say ‘already answered’, \"my previous search already revealed\". Basically any statements that you have already done the searching tasks in a previous query",
+          "maxIterations": 30,
+          "passthroughBinaryImages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        288,
+        -64
+      ],
+      "id": "58c562ae-7990-4d9a-9c1c-4d7abe33e718",
+      "name": "Orchestrator"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Searches for wedding venues based on user preferences. Provides curated recommendations for the top 5 venues with detailed explanations to help couples find their perfect wedding location.",
+        "text": "={{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "You are a wedding venue advisor who helps couples find their perfect wedding location.\n\nYour role:\n- Search for and recommend the TOP 5 wedding venues based on user preferences\n- Provide detailed explanations for each venue recommendation\n- Ask clarifying questions when needed (location, budget, guest count, venue type, etc.)\n- Give direct, actionable answers with clear steps and bullet points\n- Keep responses concise, supportive, and focused on helping users move forward confidently\n\nGuidelines:\n- Unless specifically requested, do NOT provide venue contact details\n- Provide accurate, reliable guidance\n- When information is missing, ask for what you need in a friendly way\n- Examples: \"I'd love to help! What city are you considering?\"\n- Examples: \"What is your budget?\"\n\nAlways use your available tools to search for venues when you have the required information.\n\n**IMPORTANT**  if you're unable to do something for the user, DO NOT tell them you are unable to do it. Just state confidently any data. This is important when a user includes an attribute that the API and data set does not have e.g. pretty/modern/rustic. NEVER state that you are unable to filter/do/search specific tasks. DO NOT say that \"I am unable/cannot\" statements",
+          "maxIterations": 10,
+          "passthroughBinaryImages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 3,
+      "position": [
+        176,
+        368
+      ],
+      "id": "e8339d9c-c9d3-4ecc-8449-9503ca2c8c60",
+      "name": "Venue Finder",
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "toolDescription": "catering finder description",
+        "text": "={{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "**IMPORTANT**  if you're unable to do something for the user, DO NOT tell them you are unable to do it. Just state confidently any data. This is important when a user includes an attribute that the API and data set does not have e.g. pretty/modern/rustic. NEVER state that you are unable to filter/do/search specific tasks. DO NOT say that \"I am unable/cannot\" statements",
+          "maxIterations": 10,
+          "passthroughBinaryImages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 3,
+      "position": [
+        496,
+        368
+      ],
+      "id": "0b353ba8-a28c-470b-8cf1-829176508e85",
+      "name": "Catering Finder"
+    },
+    {
+      "parameters": {
+        "sessionKey": "={ $json.sessionId }",
+        "contextWindowLength": 50
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        272,
+        576
+      ],
+      "id": "fd2b099c-d27e-477c-a1dc-27d85dd076b0",
+      "name": "Core Memory"
+    },
+    {
+      "parameters": {
+        "toolDescription": "When a user sends a request, the HTTP layer validates the input and forwards the query to the venue-lookup service. The service performs a geospatial search for vendors that support weddings within the requested area, applies business rules and filters, and returns a curated list of eligible vendors to the client.",
+        "method": "POST",
+        "url": "https://overpass.private.coffee/api/interpreter",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "data",
+              "value": "=[out:json][timeout:25];\nnode[\"amenity\"=\"events_venue\"](around:5000,-37.8136,144.9631);\nout;"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.4,
+      "position": [
+        464,
+        576
+      ],
+      "id": "dbdbd057-9a33-4665-8909-27f9a010c6e2",
+      "name": "Venue_API"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Real-time catering search API using Overpass. Searches for restaurants and catering venues in the specified area. This is the PRIMARY tool for catering discovery.",
+        "method": "POST",
+        "url": "https://overpass.private.coffee/api/interpreter",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "data",
+              "value": "=[out:json][timeout:25];\nnode[\"amenity\"=\"restaurant\"](around:5000,-37.8136,144.9631);\nout;"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.4,
+      "position": [
+        784,
+        576
+      ],
+      "id": "8d747278-7091-4f67-bb5b-ff753bd3cbfe",
+      "name": "Catering_API"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        144,
+        576
+      ],
+      "id": "6da0fab0-397b-4ba1-b40a-768515beb23b",
+      "name": "Gemini",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "IwYyV4yTU7R8hYlT",
+          "name": "Google Gemini(PaLM) Api account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "description": "Call this tool only when a user request infomation and the API doesn't have it.",
+        "workflowId": {
+          "__rl": true,
+          "value": "iae5D92toqRu6xo6xW2D0",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/iae5D92toqRu6xo6xW2D0",
+          "cachedResultName": "Mock Wedding Venue, Catering Data with Emails and Pricing"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        640,
+        576
+      ],
+      "id": "32113c91-f1b6-41d0-b9b6-6ee94470551e",
+      "name": "Fallback Data"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Wedding image describer, finds the words couples to describe the image. ",
+        "text": "={{ $json.chatInput }}",
+        "options": {
+          "systemMessage": "You are an expert wedding stylist and designer. When a user uploads an image, analyze it and provide:\n\n**Wedding Theme Analysis**\n\n1. **Primary Theme**: (e.g., Rustic Barn, Modern Minimalist, Vintage Garden, Bohemian Beach, Classic Ballroom, Industrial Chic)\n\n2. **Color Palette**:\n   - Primary colors (2-3 main colors)\n   - Accent colors (2-3 complementary colors)\n   - Overall color mood (warm, cool, neutral, vibrant, muted)\n\n3. **Style Keywords** (10-15 descriptive words):\n   - Examples: elegant, romantic, whimsical, rustic, modern, vintage, bohemian, luxurious, intimate, grand, natural, sophisticated, playful, timeless, dramatic\n\n4. **Mood & Atmosphere**:\n   - Overall feeling (elegant, casual, intimate, grand, etc.)\n   - Formality level (formal, semi-formal, casual)\n   - Energy (calm, vibrant, romantic, festive)\n\n5. **Key Visual Elements**:\n   - Florals (types, arrangements, style)\n   - Lighting (natural, string lights, chandeliers, candles)\n   - Textures (wood, metal, fabric, glass)\n   - Decor items (centerpieces, signage, table settings)\n\n6. **Venue Recommendations**:\n   - Best venue types for this style\n   - Indoor vs outdoor suitability\n   - Season recommendations\n\n7. **Practical Recommendations**:\n   - Suggested flowers and arrangements\n   - Lighting recommendations\n   - Decor elements to include\n   - Color combinations for linens, bridesmaid dresses, etc.\n\n\n8. **Liaison with the Venue Agent**:\n- Based on the identified theme, colour palette, mood, and key visual elements, pass structured style attributes and constraints to the Venue Agent to inform venue filtering, matching, and recommendations.\n\nPresent your analysis in a friendly, enthusiastic way that helps couples visualize their wedding. Use emojis where appropriate to make it engaging! 💐🎨✨",
+          "maxIterations": 10,
+          "passthroughBinaryImages": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 3,
+      "position": [
+        736,
+        160
+      ],
+      "id": "c624a0ab-b482-4a75-a500-997d0c9fd152",
+      "name": "Wedding Styler"
+    },
+    {
+      "parameters": {
+        "description": "Call this tool only when the user clearly confirms intent to book a venue. Any exploratory or informational queries must not trigger this tool.",
+        "workflowId": {
+          "__rl": true,
+          "value": "jA4p64qKConxHooVrHxjj",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/jA4p64qKConxHooVrHxjj",
+          "cachedResultName": "wedding planning EMAIL WORKING"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [
+            "userEmail"
+          ],
+          "schema": [
+            {
+              "id": "userEmail",
+              "displayName": "userEmail",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        1024,
+        160
+      ],
+      "id": "6795dbca-e5f3-4523-a338-5088e16b8ebc",
+      "name": "Email Agent"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Orchestrator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Venue Finder": {
+      "ai_tool": [
+        [
+          {
+            "node": "Orchestrator",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Wedding Styler",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Catering Finder": {
+      "ai_tool": [
+        [
+          {
+            "node": "Orchestrator",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Core Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Orchestrator",
+            "type": "ai_memory",
+            "index": 0
+          },
+          {
+            "node": "Venue Finder",
+            "type": "ai_memory",
+            "index": 0
+          },
+          {
+            "node": "Catering Finder",
+            "type": "ai_memory",
+            "index": 0
+          },
+          {
+            "node": "Wedding Styler",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Venue_API": {
+      "ai_tool": [
+        [
+          {
+            "node": "Venue Finder",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Catering_API": {
+      "ai_tool": [
+        [
+          {
+            "node": "Catering Finder",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Orchestrator",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Venue Finder",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Catering Finder",
+            "type": "ai_languageModel",
+            "index": 0
+          },
+          {
+            "node": "Wedding Styler",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fallback Data": {
+      "ai_tool": [
+        [
+          {
+            "node": "Venue Finder",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Catering Finder",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Wedding Styler",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wedding Styler": {
+      "ai_tool": [
+        [
+          {
+            "node": "Orchestrator",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email Agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "Orchestrator",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "261a0946-4bfd-4d25-8618-3b826f89c0b9",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cc167db080c2d95c83e1041a2be0ddbd8c7c5b39ee5f83769a530f4c797249b3"
+  },
+  "id": "mA7qiwg7-d7kjj9yLhXr8",
+  "tags": []
+}
